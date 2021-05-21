@@ -1,1 +1,0 @@
-Button(frame0, text="Ok", command=lambda: check(text_name.get(), text_pass.get()) ,font=("", 12))
