@@ -68,7 +68,33 @@ class Serdb:
     def getMsg(self,topic):
         self.db.s_table(topic)
         return self.db.outData()
-    
+
+    def addTU(self,topic,user):
+        self.db.s_table('topic_user')
+        self.db.inData({'topic':topic,'user':user})
+
+    def getTU(self,topic):
+        self.db.s_table('topic_user')
+        res = []
+        for d in self.db.outData({'topic':topic}):
+            res.append(d['user'])
+        return res
+
+    def getTUu(self,field):
+        self.db.s_table('topic_user')
+        res = {}
+        for d in self.db.outData():
+            res.add(d[field])
+        return list(res)
+
+    def addPass(self,topic,password):
+        self.db.s_table('topic_pass')
+        self.db.inData({'topic':topic,'password':password})
+
+    def getPass(self,topic):
+        self.db.s_table('topic_pass')
+        for d in self.db.outData({'topic':topic}):
+            return d['password']
 
 class Clidb:
 
@@ -85,6 +111,9 @@ class Clidb:
         for d in self.db.outData({'field':field}):
             res.append(d['value'])
         return res
+    
+
+
 
     def userE(self,name):
         return name in self.db.db.list_collection_names()

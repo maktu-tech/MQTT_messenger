@@ -78,12 +78,16 @@ def check(n1, p1):
                 msg_dict[tsub[i]]=""
             switchmain()
         else:
-            label_msg.configure(text=" Wrong Password, Try again")
+            label_msg.configure(text="Try Again!")
     return
 
 def topD(index):
-    global cur_tpub
+    global cur_tpub, tsub_btn, cur_tpub_btn
     frame2.place(x = 270,y = 640,width=640,height=60)
+    if cur_tpub_btn != '':
+        cur_tpub_btn.config(bg = secCol,fg = whiteCol)
+    tsub_btn[index].config(bg = whiteCol,fg = secCol)
+    cur_tpub_btn = tsub_btn[index]
     if cur_tpub in msg_card:
         for card in msg_card[cur_tpub]:
             card[0].grid_forget()
@@ -203,6 +207,7 @@ def switchmain():
 # -- .ps file ---
 topic_names = []
 cur_tpub=""
+cur_tpub_btn = ''
 pws=""
 tsub=[]
 tpub=[]

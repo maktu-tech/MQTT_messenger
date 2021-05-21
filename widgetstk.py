@@ -21,10 +21,12 @@ from tkscrolledframe import ScrolledFrame
 #01b0aa
 
 bkcolor = '#e0f7fa'
-bklight = '#80e27e'
-secCol = '#0091ea'
-whiteCol = '#ffffff'
+bklight = '#ccff90'
+secCol = '#263238'
 
+secfont = '#ffffff'
+whiteCol = '#ffffff'
+col_msg = '#1a237e'
 
 def createLbl(par,txt,anchor,color = '#ffffff'):
    lbl = tk.Label(par,text=txt, font=("Calibri",20 ),fg = '#006064',anchor=anchor,bg = bkcolor)
@@ -72,8 +74,9 @@ def scrframe(root):
 
 
 def scrButton(par,txt,command,row):
-   butt = tk.Button(par, text=txt, command=command,borderwidth=0,bg = secCol,relief=tk.FLAT ,font=('Ariel',15,'bold'),width=16,height=2)
+   butt = tk.Button(par, text=txt, command=command,borderwidth=0,bg = secCol,relief=tk.FLAT,fg = secfont ,font=('Ariel',15,'bold'),width=16,height=2)
    butt.grid(column=1,row=row,padx = 4,pady=2)
+   return butt
    # butt.place(x=x, y=y, width=width, height=height)
    # ,width=width//100, height=height//100
 
@@ -84,7 +87,7 @@ def msgLbl(par,txt1,txt2):
    # frm.pack(side=TOP)
    frmpad = tk.Frame(frm,height=50,width=wd,bg = bklight)
    frmpad.grid(column=1,row=1,padx=10,pady=10)
-   nameUser = tk.Label(frmpad,text = txt1,bg=bklight,justify=LEFT,font=("Times Roman",12),width=wd,anchor=tk.W)
+   nameUser = tk.Label(frmpad,text = txt1,bg=bklight,justify=LEFT,fg = col_msg,font=("Times Roman",12),width=wd,anchor=tk.W)
    nameUser.grid(column=1,row=1,padx=10,pady=10)
    msg = tk.Label(frmpad,text=txt2,bg = bklight,justify=LEFT,font=("Times Roman",12),width=wd,anchor=tk.W)
    msg.grid(column=1,row=2,padx=10,pady=10)
